@@ -45,4 +45,18 @@ char * get_current_date()
     return result;
 }
 ```
+### 计算一个值中值为1的位的个数
+```cpp
+int count_one_bits(unsigned int)
+{
+	int ones;
+	for(ones=0;value!=0;value=value>>2)
+	{
+		if(value%2!=0)
+		{
+			ones += 1;
+		}
+	}
+}
+```
 
