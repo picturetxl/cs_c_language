@@ -57,6 +57,7 @@ int count_one_bits(unsigned int)
 			ones += 1;
 		}
 	}
+	return ones;
 }
 ```
 
