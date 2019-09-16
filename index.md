@@ -60,4 +60,25 @@ int count_one_bits(unsigned int)
 	return ones;
 }
 ```
+### 库函数使用fmod 和 modf
+
+```c
+#include <stdio.h>
+#include <math.h> //fmod modf
+#include <stdbool.h> //bool 类型
+int main(void)
+{
+	printf("hello world\n");
+	float s = fmod(3.2,2.0);//浮点数求余
+	printf("%f\n",s);
+
+	double integer;
+	double fraction = modf(3.2,&integer);//取一个浮点数的整数部分和小数部分
+	printf("%g %g\n",integer,fraction);
+
+	bool isbool = false;
+	printf("%d\n",isbool);
+	return 0;
+}
+```
 
