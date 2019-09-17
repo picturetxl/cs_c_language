@@ -143,3 +143,45 @@ void test_vsnprintf()
 	}
 }
 ```
+### 字符串的读取
+```c
+
+int main()
+{
+	char greeting[50] = "hell,and how are you today?";//字符串常量,自动在末尾加上\0
+	puts("here are some strings:");//自动在结尾加上换行符
+	printf("%c\n", *"hello");//h :说明字符串常量 被视为该字符串存储位置的指针
+
+//读取
+	/* gets 和 puts 不使用
+		gets_s(word);//读取整行输入,直到遇到换行符,然后丢弃换行符,并在末尾加上\0  gets被标准废除了 但是gets_s 有些编译器支持c11,也不一定支持gets_s
+		puts(word);
+	*/
+	char name[50];
+	scanf("%s", &name);//只能读取一个单词 
+	printf("%s\n", name);
+	
+	/*
+		问题点:当先输入:①hello回车 下面的fgets得到的是一个换行
+					  ②hello world回车 下面的fgets直接得到空格world回车 然后程序结束
+
+		用
+			while (getchar() != '\n');//刷新 缓冲区
+		解决
+	*/
+
+	while (getchar() != '\n');//刷新 缓冲区
+	
+
+	char word[100];
+	fputs("enter a string:", stdout);//fputs 不会再末尾加上换行符
+	fgets(word, 100,stdin);//读取一行 fgets会存储换行符 并在结尾加入\0
+	fputs(word, stdout);
+
+
+
+	return 0;
+}
+```
+
+
