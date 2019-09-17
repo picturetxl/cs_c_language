@@ -184,4 +184,67 @@ int main()
 }
 ```
 
+### 字符串相关函数
+```c
 
+void string_all()
+{
+	char greeting[50] = "hello,and how are you today?";//字符串常量,自动在末尾加上\0
+	puts("here are some strings:");//自动在结尾加上换行符
+	printf("%c\n", *"hello");//h :说明字符串常量 被视为该字符串存储位置的指针
+
+
+	printf("%d\n", strlen(greeting));//长度
+
+	char flowers[100] = "flowers ";
+	strncat(flowers, greeting, 100 - strlen(flowers) - 1);//合并 第三个参数表示最大可以添加的字符数
+	puts(flowers);
+
+	char comp1[50] = "Hello";
+	char comp2[50] = "hello";
+
+	//比较
+	//strcmp 一直比较到结尾
+	if (strcmp(comp1, comp2) == 0)//相同
+	{
+		puts("same string");
+	}
+	else if (strcmp(comp1, comp2) > 0) //comp1 大于 comp2
+	{
+		puts("comp1 greater than comp2");
+	}
+	else if (strcmp(comp1, comp2) < 0)//comp1 小于 comp2
+	{
+		puts("comp1 less than comp2");
+	}
+
+	//比较指定的前n个字符
+	char comp11[50] = "astrodsd";
+	char comp22[50] = "astrosds";
+	if (strncmp(comp11, comp22, 5) == 0)//相同
+	{
+		puts("same string");
+	}
+	else if (strncmp(comp11, comp22, 5) > 0) //comp11 大于 comp22
+	{
+		puts("comp11 greater than comp22");
+	}
+	else if (strncmp(comp11, comp22, 5) < 0)//comp11 小于 comp22
+	{
+		puts("comp11 less than comp22");
+	}
+
+
+	//拷贝
+	char qwords[20] = "hello world";
+	char aimword[50] = "somethingdssssssssss";
+
+	int size = strlen(aimword) - 1;
+	strncpy(aimword, qwords, size);//拷贝时将第三个参数设置为目标字符串长度-1 
+	aimword[size] = '\0';//确保存储的是一个字符串
+
+	puts(aimword);
+
+
+}
+```
