@@ -248,3 +248,48 @@ void string_all()
 
 }
 ```
+
+
+### 计算星期几
+```c
+int CaculateWeekDay(int y, int m, int d)
+{
+	if (m == 1 || m == 2) {
+		m += 12;
+		y--;
+	}
+	int iWeek = (d + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) % 7;
+	switch (iWeek)
+	{
+	case 0: return 0;//星期一
+	case 1: return 1;//星期二
+	case 2: return 2;//星期三
+	case 3: return 3;//星期四
+	case 4: return 4;//星期五
+	case 5: return 5;//星期六
+	case 6: return 6;//星期日
+	}
+}
+```
+
+
+### 密码输入
+```c
+printf("请输入密码:");
+char c;
+int i = 0;
+while ((c = _getch()) != '\r')
+{
+	pwd[i] = c;
+	i++;
+	if (c != '\b')    //输入内容不是退格时就显示 “*”号
+	{
+		printf("*");
+	}
+	else     //输入内容是退格时 删除前一个 “*”号
+	{
+		printf("\b \b");
+	}
+}
+printf("\n");
+```
