@@ -20,7 +20,33 @@ int day_diff(int year_start, int month_start, int day_start, int year_end, int m
 
 ```
 
-### 获取当前日期
+## 时间
++ 获取处理器时间
++ 获取程序运行时间
++ 获取本地时间
++ 按一定格式打印时间
+```c
+
+/*
+
+clock_t clock(void);//处理器时间 表示从程序开始过去的时间 
+time_t time(time_t *timer);
+double difftime(time_t end, time_t beggining);
+
+
+char *ctime(const time_t *timer);//返回描述本地时间的字符串
+struct tm *gmtime(const time_t *timer);//返回用UTC（统一世界时间）显示的时间
+struct tm *localtime(const time_t *timer);//函数产生本地时间
+
+time_t mktime(struct tm *timeptr);//将struct tm类型的时间转换为日历时间
+char *asctime(const tm *timeptr);//据函数参数指向的分解时间，返回指向类似Tue Aug 30 17:07:12 1994的字符串的指针
+
+size_t strftime(char *s, size_t maxsize, const char *format, const struct tm *timeptr);//按一定格式打印日期时间
+
+*/
+```
+
+### 1. 获取当前日期
 
 ```cpp
 //    printf("%d\n",p->tm_sec); /*获取当前秒*/
@@ -31,7 +57,7 @@ int day_diff(int year_start, int month_start, int day_start, int year_end, int m
 //    printf("%d\n",1900+p->tm_year);/*获取当前年份,从1900开始，所以要加1900*/
 //    printf("%d\n",p->tm_yday); /*从今年1月1日算起至今的天数，范围为0-365*/
 
-char * get_current_date()
+char * get_current_date()//20190101
 {
     time_t timep;
     struct tm *p;
@@ -45,6 +71,27 @@ char * get_current_date()
     return result;
 }
 ```
+
+### 2. 程序测试时间
+```c
+clock_t startClock = clock();
+time_t startTime = time(NULL);
+
+//需要测试的程序 运行时间 和 使用处理器的时间
+int sum = 0;
+for (int i = 0; i < 10000; i++)
+{
+	sum += i;
+}
+
+clock_t endClock = clock();
+time_t endTime = time(NULL);
+printf("使用的处理器时间是: %g sec\n", (endClock - startClock) / (double)CLOCKS_PER_SEC);
+printf("程序运行时间是: %g sec\n", difftime(endTime, startTime));
+
+```
+
+
 ### 计算一个值中值为1的位的个数
 ```cpp
 int count_one_bits(unsigned int)
@@ -320,3 +367,8 @@ bool strch_test(char * line,char c)
 
 
 ### 字符串与数值之间的转换
+
+
+
+
+
