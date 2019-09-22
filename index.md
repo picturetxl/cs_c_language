@@ -293,3 +293,30 @@ while ((c = _getch()) != '\r')
 }
 printf("\n");
 ```
+### 处理字符串中的字符
+```c
+#include <ctype.h>
+void strch_test()
+{
+	char line[50] = "dsdsd";
+	char* find = strchr(line, 's');
+	printf("%c\n", *find);//s
+	puts(find);//sdsd
+}
+//字符串中 是否存在字符
+bool strch_test(char * line,char c)
+{
+	char* find = strchr(line, c);
+	if (find!=NULL)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+```
+
+
+### 字符串与数值之间的转换
